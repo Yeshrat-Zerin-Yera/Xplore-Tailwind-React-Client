@@ -1,8 +1,14 @@
 import React from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../../../assets/logo.png';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { FaUserCircle } from 'react-icons/fa';
+
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext);
+
     return (
         <div className="navbar bg-base-100 py-2">
             {/* Navbar Start */}
@@ -46,11 +52,20 @@ const Header = () => {
                 {/* Profile Picture */}
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar mr-2">
                     <div className="w-10 rounded-full">
-                        <img src="https://placeimg.com/80/80/people" alt="" />
+                        {
+                            user ? <img src={user?.photoURL} alt="" title={user?.displayName} />
+                                :
+                                <FaUserCircle className='w-[100%] h-[100%]' />
+                        }
                     </div>
                 </label>
                 {/* Login Button */}
-                <Link to='/login' className='btn'>Login</Link>
+                <>
+                    {
+                        user ? <Link to='/login' onClick={logOut} className='btn'>Sign Out</Link>
+                            : <Link to='/login' className='btn'>Login</Link>
+                    }
+                </>
             </div>
         </div>
     );
