@@ -27,6 +27,11 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
+                <label tabIndex={0} className="btn btn-ghost btn-circle avatar mr-2">
+                    <div className="w-10 rounded-full">
+                        <img src="https://placeimg.com/80/80/people" alt="" />
+                    </div>
+                </label>
                 <Link to='/login' className='btn'>Login</Link>
             </div>
         </div>
