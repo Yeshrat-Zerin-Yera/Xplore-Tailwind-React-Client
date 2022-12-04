@@ -28,6 +28,7 @@ const SignUp = () => {
                 const user = result.user;
                 console.log(user);
                 handleUpdateUserProfile(name, photoURL);
+                form.reset();
                 navigate(from, { replace: true });
             })
             .catch(error => {
