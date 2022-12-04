@@ -1,15 +1,20 @@
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React from 'react';
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
-    const { signIn } = useContext(AuthContext);
+    const { signIn, signInProvider } = useContext(AuthContext);
+    const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location?.state?.from?.pathname;
+    const from = location?.state?.from?.pathname || '/';
 
+    // Handle Submit
     const handleSubmit = event => {
         event.preventDefault();
         const form = event.target;
@@ -28,6 +33,34 @@ const Login = () => {
             })
     };
 
+    // Handle Google Login
+    const handleGoogleLogin = () => {
+        signInProvider(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate('/');
+            })
+            .catch(error => {
+                console.error(error);
+                toast.error(error.message);
+            })
+    };
+
+    // Handle Github Login
+    const handleGithubLogin = () => {
+        signInProvider(githubProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate('/');
+            })
+            .catch(error => {
+                console.error(error);
+                toast.error(error.message);
+            })
+    };
+
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col">
@@ -35,6 +68,7 @@ const Login = () => {
                     <h1 className="text-4xl md:text-6xl font-bold">Please Login Now!</h1>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                    {/* Form */}
                     <form onSubmit={handleSubmit} className="card-body">
                         <div className="form-control">
                             <label className="label">
@@ -53,6 +87,15 @@ const Login = () => {
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Login</button>
+                        </div>
+                        <div className="divider">OR</div>
+                        <div className=" text-center">
+                            <button onClick={handleGoogleLogin} className="btn btn-circle btn-primary mr-2">
+                                <FaGoogle className="h-6 w-6" />
+                            </button>
+                            <button onClick={handleGithubLogin} className="btn btn-circle ml-2">
+                                <FaGithub className="h-6 w-6" />
+                            </button>
                         </div>
                     </form>
                 </div>

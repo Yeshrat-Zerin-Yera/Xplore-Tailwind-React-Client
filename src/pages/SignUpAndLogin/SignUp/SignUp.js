@@ -1,13 +1,18 @@
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React from 'react';
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const SignUp = () => {
-    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const { createUser, updateUserProfile, signInProvider } = useContext(AuthContext);
+    const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
     const navigate = useNavigate();
 
+    // Handle Submit
     const handleSubmit = event => {
         event.preventDefault();
         const form = event.target;
@@ -29,6 +34,34 @@ const SignUp = () => {
             })
     };
 
+    // Handle Google Login
+    const handleGoogleLogin = () => {
+        signInProvider(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate('/');
+            })
+            .catch(error => {
+                console.error(error);
+                toast.error(error.message);
+            })
+    };
+
+    // Handle Github Login
+    const handleGithubLogin = () => {
+        signInProvider(githubProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate('/');
+            })
+            .catch(error => {
+                console.error(error);
+                toast.error(error.message);
+            })
+    };
+
     const handleUpdateUserProfile = (name, photoURL) => {
         const profile = { displayName: name, photoURL: photoURL };
         console.log(profile);
@@ -47,6 +80,7 @@ const SignUp = () => {
                     <h1 className="text-4xl md:text-6xl font-bold">Please Sign Up!</h1>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                    {/* Form */}
                     <form onSubmit={handleSubmit} className="card-body">
                         <div className="form-control">
                             <label className="label">
@@ -77,6 +111,15 @@ const SignUp = () => {
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Sign Up</button>
+                        </div>
+                        <div className="divider">OR</div>
+                        <div className=" text-center">
+                            <button onClick={handleGoogleLogin} className="btn btn-circle btn-primary mr-2">
+                                <FaGoogle className="h-6 w-6" />
+                            </button>
+                            <button onClick={handleGithubLogin} className="btn btn-circle ml-2">
+                                <FaGithub className="h-6 w-6" />
+                            </button>
                         </div>
                     </form>
                 </div>
