@@ -2,7 +2,7 @@
 
 ## Description
 
-This is the client side of a educational website. There are various courses user can select from. Sign up and login using form, google, github is available. The website is hosted in firebase.
+This is the client side of a educational website. There are various courses user can select from. Sign up and login using form, google and github is available. The website is hosted in firebase.
 
 ## Important links
 
@@ -16,7 +16,11 @@ Github server side private repository link: [https://github.com/programming-hero
 
 Github client side private repository link: [https://github.com/programming-hero-web-course1/b610-learning-platform-client-side-Yeshrat-Zerin-Yera](https://github.com/programming-hero-web-course1/b610-learning-platform-client-side-Yeshrat-Zerin-Yera)
 
-### Livesite Link
+### Livesite Link Of Server Side
+
+Firebase livesite link: [https://memory-bank-tailwind-react.netlify.app/](https://memory-bank-tailwind-react.netlify.app/)
+
+### Livesite Link Of Client Side
 
 Firebase livesite link: [https://memory-bank-tailwind-react.netlify.app/](https://memory-bank-tailwind-react.netlify.app/)
 
