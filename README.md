@@ -1,5 +1,9 @@
 # Xplore Tailwind DaisyUI React Client
 
+## Description
+
+This is the client side of a educational website. There are various courses user can select from. Sign up and login using form, google, github is available. The website is hosted in firebase.
+
 ## Important links
 
 Important links are given:
