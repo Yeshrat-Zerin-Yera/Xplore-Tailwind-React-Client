@@ -3,7 +3,7 @@ import React from 'react';
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const SignUp = () => {
@@ -11,6 +11,8 @@ const SignUp = () => {
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location?.state?.from?.pathname || '/';
 
     // Handle Submit
     const handleSubmit = event => {
@@ -26,7 +28,7 @@ const SignUp = () => {
                 const user = result.user;
                 console.log(user);
                 handleUpdateUserProfile(name, photoURL);
-                navigate('/');
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 toast.error(error.message);
@@ -40,7 +42,7 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                navigate('/');
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.error(error);
@@ -54,7 +56,7 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                navigate('/');
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.error(error);
