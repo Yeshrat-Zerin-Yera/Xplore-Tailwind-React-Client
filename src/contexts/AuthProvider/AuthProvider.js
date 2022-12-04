@@ -32,6 +32,7 @@ const AuthProvider = ({ children }) => {
 
     // Login With Different Provider 
     const signInProvider = (provider) => {
+        setLoading(true);
         return signInWithPopup(auth, provider);
     };
 
