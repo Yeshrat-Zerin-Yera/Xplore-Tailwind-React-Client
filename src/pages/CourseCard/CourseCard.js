@@ -4,17 +4,28 @@ import { Link } from 'react-router-dom';
 import StarRated from '../Others/StarRated/StarRated';
 
 const CourseCard = ({ course }) => {
-    const { title, rating, introduction, thumbnail_url, _id } = course;
+    const { title, rating, introduction, thumbnail_url, _id, others_info } = course;
 
     return (
         <div className="card card-compact w-80 bg-base-100 shadow-xl mx-3 mb-6">
             <figure><img src={thumbnail_url} alt="" /></figure>
             <div className="card-body">
-                {
-                    rating?.badge === 'New'
-                        ? <div className="badge badge-accent badge-outline">{rating?.badge}</div>
-                        : <div className="badge badge-secondary badge-outline">{rating?.badge}</div>
-                }
+                <div className='flex items-center justify-between'>
+                    <div>
+                        {
+                            rating?.badge === 'New'
+                                ? <div className="badge badge-accent badge-outline">{rating?.badge}</div>
+                                : <div className="badge badge-secondary badge-outline">{rating?.badge}</div>
+                        }
+                    </div>
+                    <div>
+                        {
+                            others_info?.price === 0
+                                ? <div className="text-warning text-2xl font-bold">Free</div>
+                                : <div className="text-warning text-2xl font-bold">{others_info?.price}$</div>
+                        }
+                    </div>
+                </div>
                 <h2 className="card-title">
                     {title}
                 </h2>

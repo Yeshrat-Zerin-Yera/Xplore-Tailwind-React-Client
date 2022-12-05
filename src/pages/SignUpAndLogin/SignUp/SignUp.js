@@ -29,7 +29,6 @@ const SignUp = () => {
                 console.log(user);
                 handleUpdateUserProfile(name, photoURL);
                 form.reset();
-                navigate(from, { replace: true });
             })
             .catch(error => {
                 toast.error(error.message);
