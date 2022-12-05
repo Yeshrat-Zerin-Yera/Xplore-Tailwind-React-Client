@@ -5,7 +5,6 @@ import { useLoaderData } from 'react-router-dom';
 const BlogDetails = () => {
     const blog = useLoaderData();
     const { question, title, description, thumbnail_url, author } = blog;
-    console.log(question.length);
 
     return (
         // Blog Details
