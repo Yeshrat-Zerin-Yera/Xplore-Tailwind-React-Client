@@ -26,22 +26,22 @@ export const routes = createBrowserRouter([
             {
                 path: '/courses',
                 element: <AllCourses></AllCourses>,
-                loader: () => fetch('http://localhost:5000/courses')
+                loader: () => fetch('https://xplore-tailwind-react-server.vercel.app/courses')
             },
             {
                 path: '/categories/:id',
                 element: <Courses></Courses>,
-                loader: ({ params }) => fetch(`http://localhost:5000/categories/${params.id}`)
+                loader: ({ params }) => fetch(`https://xplore-tailwind-react-server.vercel.app/categories/${params.id}`)
             },
             {
                 path: '/courses/:id',
                 element: <CourseDetails></CourseDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
+                loader: ({ params }) => fetch(`https://xplore-tailwind-react-server.vercel.app/courses/${params.id}`)
             },
             {
                 path: '/checkout/:id',
                 element: <PrivateRoute><Checkout></Checkout></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/checkout/${params.id}`)
+                loader: ({ params }) => fetch(`https://xplore-tailwind-react-server.vercel.app/checkout/${params.id}`)
             },
             {
                 path: '/faq',
@@ -50,12 +50,12 @@ export const routes = createBrowserRouter([
             {
                 path: '/blogs',
                 element: <Blog></Blog>,
-                loader: () => fetch('http://localhost:5000/blogs')
+                loader: () => fetch('https://xplore-tailwind-react-server.vercel.app/blogs')
             },
             {
                 path: '/blogs/:id',
                 element: <BlogDetails></BlogDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/blogs/${params.id}`)
+                loader: ({ params }) => fetch(`https://xplore-tailwind-react-server.vercel.app/blogs/${params.id}`)
             },
             {
                 path: '/login',
