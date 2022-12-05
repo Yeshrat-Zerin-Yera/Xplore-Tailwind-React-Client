@@ -1,17 +1,35 @@
 import React from 'react';
+import { FaArrowRight } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import StarRated from '../Others/StarRated/StarRated';
 
-const CourseCard = () => {
+const CourseCard = ({ course }) => {
+    const { title, rating, introduction, thumbnail_url, _id } = course;
+
     return (
-        <div className="card w-80 bg-base-100 shadow-xl mx-3 mb-6">
-            <figure><img src="https://placeimg.com/400/225/arch" alt="" /></figure>
+        <div className="card card-compact w-80 bg-base-100 shadow-xl mx-3 mb-6">
+            <figure><img src={thumbnail_url} alt="" /></figure>
             <div className="card-body">
+                {
+                    rating?.badge === 'New'
+                        ? <div className="badge badge-accent badge-outline">{rating?.badge}</div>
+                        : <div className="badge badge-secondary badge-outline">{rating?.badge}</div>
+                }
                 <h2 className="card-title">
-                    Shoes!
-                    <div className="badge badge-secondary">NEW</div>
+                    {title}
                 </h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
+                <p>
+                    {
+                        introduction?.length < 80 ? introduction : introduction.slice(0, 80) + '...'
+                    }
+                </p>
                 <div className="card-actions justify-end">
-                    <button className="btn btn-primary">View</button>
+                    <div className='w-[100%] flex items-center justify-between'>
+                        <div className="rating">
+                            <StarRated value={rating?.number}></StarRated>
+                        </div>
+                        <Link to={`/courses/${_id}`} className="btn btn-primary">View<FaArrowRight className='ml-1' /></Link>
+                    </div>
                 </div>
             </div>
         </div>
