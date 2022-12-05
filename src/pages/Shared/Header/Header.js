@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Logo from '../../../assets/logo.png';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { FaUserCircle } from 'react-icons/fa';
-import toogleThemes from '../../../toogleThemes/toogleThemes';
+import toogleThemes from '../../../calculates/toogleThemes/toogleThemes';
 
 
 const Header = () => {
@@ -22,7 +22,7 @@ const Header = () => {
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/courses'>Courses</Link></li>
                         <li><Link to='/faq'>FAQ</Link></li>
-                        <li><Link to='/blog'>Blog</Link></li>
+                        <li><Link to='/blogs'>Blog</Link></li>
                     </ul>
                 </div>
                 {/* Logo And Title */}
@@ -39,7 +39,7 @@ const Header = () => {
                     <li><Link to='/' className='rounded-md'>Home</Link></li>
                     <li><Link to='/courses' className='rounded-md'>Courses</Link></li>
                     <li><Link to='/faq' className='rounded-md'>FAQ</Link></li>
-                    <li><Link to='/blog' className='rounded-md'>Blog</Link></li>
+                    <li><Link to='/blogs' className='rounded-md'>Blog</Link></li>
                 </ul>
             </div>
             {/* Navbar End */}

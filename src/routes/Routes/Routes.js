@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import Main from '../../layouts/Main/Main';
 import AllCourses from '../../pages/AllCourses/AllCourses';
 import Blog from '../../pages/Blog/Blog';
+import BlogDetails from '../../pages/BlogDetails/BlogDetails';
 import Checkout from '../../pages/Checkout/Checkout';
 import CourseDetails from '../../pages/CourseDetails/CourseDetails';
 import Courses from '../../pages/Courses/Courses';
@@ -47,8 +48,14 @@ export const routes = createBrowserRouter([
                 element: <FAQ></FAQ>
             },
             {
-                path: '/blog',
-                element: <Blog></Blog>
+                path: '/blogs',
+                element: <Blog></Blog>,
+                loader: () => fetch('http://localhost:5000/blogs')
+            },
+            {
+                path: '/blogs/:id',
+                element: <BlogDetails></BlogDetails>,
+                loader: ({ params }) => fetch(`http://localhost:5000/blogs/${params.id}`)
             },
             {
                 path: '/login',

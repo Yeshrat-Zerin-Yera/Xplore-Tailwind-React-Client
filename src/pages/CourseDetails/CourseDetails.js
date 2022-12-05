@@ -14,7 +14,6 @@ const CourseDetails = () => {
         if (selectedCourses) {
             const newCourses = JSON.parse(selectedCourses);
             const updateCourses = newCourses.filter(newCourse => newCourse._id !== course._id);
-            console.log(course._id);
             updateCourses.push(course);
             localStorage.setItem('courses', JSON.stringify(updateCourses));
         }
