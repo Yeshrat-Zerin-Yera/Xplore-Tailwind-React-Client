@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import toast from 'react-hot-toast';
 import { FaArrowRight, FaBook, FaDownload, FaEye, FaLaptop, FaUser } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
 import { useReactToPrint } from 'react-to-print';
@@ -29,8 +28,7 @@ const CourseDetails = () => {
     // Download PDF Button Action
     const handleDownloadPDF = useReactToPrint({
         content: () => componentRef.current,
-        documentTitle: 'course_data',
-        onAfterPrint: () => toast.success('PDF Download Successfull')
+        documentTitle: title
     });
 
     return (
