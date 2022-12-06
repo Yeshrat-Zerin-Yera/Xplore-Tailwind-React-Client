@@ -29,6 +29,7 @@ const SignUp = () => {
                 console.log(user);
                 handleUpdateUserProfile(name, photoURL);
                 form.reset();
+                navigate(-1);
             })
             .catch(error => {
                 toast.error(error.message);
